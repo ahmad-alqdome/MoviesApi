@@ -10,6 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+/*************************************************************************************** Auto Mapper ***************************************************************************/
+
+builder.Services.AddAutoMapper(typeof(Program)); //  will scan all project 
+
 /************************************************************************************** Inject Service *************************************************************************/
 
 builder.Services.AddTransient<IGenresService, GenresService>();

@@ -13,7 +13,7 @@ namespace MoviesApi.Services
         {
             _context = context;
         }
-
+ /************************************************** Get All && Get Genre Id ***************************************************/
         public async Task<IEnumerable<Movie>> GetAll(byte id = 0)
         {
          return await _context.Movies
@@ -22,17 +22,12 @@ namespace MoviesApi.Services
                 .Include(m => m.Genre)
                 .ToListAsync();
         }
-
+ /************************************************** Get By Id ***************************************************/
         public async Task<Movie> GetById(byte id)
         {
             return await _context.Movies.Include(m => m.Genre).FirstOrDefaultAsync(m => m.Id == id); 
         }
-
-        //public async  Task<IEnumerable<Movie>> GetMoviesByGenreId(byte id)
-        //{
-        //  throw new NotImplementedException();  
-        //}
-
+ /************************************************** Add ***************************************************/
         public async  Task<Movie> Add(Movie movie)
         {
            
@@ -42,6 +37,7 @@ namespace MoviesApi.Services
             return movie;
 
         }
+/************************************************** Update ***************************************************/
         public Movie Update(Movie movie)
         {
             _context.Update(movie);
@@ -49,7 +45,7 @@ namespace MoviesApi.Services
 
             return movie;
         }
-
+ /************************************************** Delete ***************************************************/
         public Movie Delete(Movie movie)
         {
             _context.Movies.Remove(movie);
